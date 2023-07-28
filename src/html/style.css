@@ -1,0 +1,503 @@
+/*
+------------------ General Stylesheet ------------------
+version:   1.0
+date:      2023
+author:    danielcgiraldo
+*/
+
+/* default css */
+
+body {
+    background-color: white;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+hr {
+    border-top: 2px solid black;
+}
+
+header {
+    width: 100%;
+    margin-bottom: -40px;
+}
+
+header div.box {
+    width: calc(100% - 2px);
+    border: 2px solid black;
+    margin-bottom: 110px;
+    display: -webkit-box;
+}
+
+header div.box a.title {
+    padding: 6px 18px;
+    font-size: 16px;
+    height: 100%;
+    width: auto;
+    color: white;
+    background-color: black;
+    white-space: nowrap;
+    display: -webkit-box;
+    -webkit-box-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+header div.box a.title img {
+    height: 10px;
+    width: auto;
+    margin-right: 6px;
+    margin-top: 2px;
+}
+
+header div.box a.title p {
+    font-style: normal;
+    margin-bottom: 0;
+    font-size: 13px;
+}
+
+header h1 {
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 105%;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+header p {
+    font-style: italic;
+    font-size: 20px;
+    margin-bottom: 50px;
+}
+
+header p:last-child {
+    font-size: 14px;
+}
+
+header p a {
+    color: black;
+    font-weight: 700;
+}
+
+h1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+table.conventions {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+table.conventions > tbody > tr > td:nth-child(odd) {
+    width: 47%;
+}
+
+table.conventions > tbody > tr > td:nth-child(even) {
+    width: 6%;
+    padding: 0;
+}
+
+table.conventions * {
+    padding: 0;
+    font-size: 14px;
+}
+
+table.conventions table.convention-campus {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+table.conventions table.convention-campus td {
+    width: 14.28%;
+    padding: 0;
+    height: 40px;
+    border-right: 2px solid #e5e5e5;
+    vertical-align: middle;
+}
+
+table.conventions table.convention-campus td span {
+    display: block;
+}
+
+table.conventions table.convention-campus th {
+    width: 14.28%;
+    padding: 6px 0 3px 0;
+    border-bottom: 2px solid black;
+    border-right: 2px solid #e5e5e5;
+}
+
+table.conventions table.convention-campus th:last-child,
+table.conventions table.convention-campus td:last-child {
+    border-right: 0;
+}
+
+table.conventions table.convention-campus-info td {
+    padding: 0;
+    width: auto;
+    vertical-align: middle;
+}
+
+table.conventions table.convention-campus-info td:nth-child(2) {
+    width: 24%;
+    padding-left: 7px;
+}
+
+table.conventions table.convention-campus-info td:nth-child(5) {
+    width: 24%;
+    padding-left: 7px;
+    text-align: left;
+}
+
+table.conventions table.convention-campus-info td:nth-child(8) {
+    width: 24%;
+    padding-left: 7px;
+}
+
+table.conventions table.convention-campus-info td:nth-child(1),
+table.conventions table.convention-campus-info td:nth-child(4),
+table.conventions table.convention-campus-info td:nth-child(7) {
+    width: 7%;
+    height: 30px;
+}
+
+table.conventions table.convention-campus-info td:nth-child(3),
+table.conventions table.convention-campus-info td:nth-child(6) {
+    width: 5%;
+}
+
+table.conventions table.convention-code > tbody > tr > td:nth-child(1),
+table.conventions table.convention-code > tbody > tr > td:nth-child(4) {
+    width: 15%;
+}
+
+table.conventions table.convention-code > tbody > tr > td:nth-child(3) {
+    width: 5%;
+}
+
+table.conventions table.convention-code > tbody > tr > td:nth-child(2),
+table.conventions table.convention-code > tbody > tr > td:nth-child(5) {
+    width: 35%;
+    padding: 0;
+    vertical-align: middle;
+    padding-left: 10px;
+}
+
+table.conventions table.convention-code table {
+    width: 100%;
+}
+
+table.conventions table.convention-code table th {
+    padding: 6px 0 3px 0;
+    border-bottom: 2px solid black;
+}
+
+table.conventions table.convention-code table td {
+    height: 30px;
+}
+
+p.disclaimer {
+    font-size: 10px;
+    margin-bottom: 10px;
+}
+
+.border {
+    border-bottom: 2px solid black;
+}
+
+.light-gray {
+    background-color: #f1f1f1;
+}
+
+.mid-gray {
+    background-color: #d9d9d9;
+}
+
+.black {
+    background-color: black;
+    color: white;
+}
+
+section.component {
+    width: 100%;
+    margin-top: 30px;
+}
+
+section.component:first-child {
+    margin-top: 20px;
+}
+
+section.component div.title {
+    width: 100%;
+    background: #a6a6a6;
+    padding: 10px 15px;
+    
+    font-weight: 700;
+}
+
+section.component div.title h2 {
+    font-size: 18px !important;
+}
+
+section.component div.group {
+    width: 100%;
+    background: #cdcdcd;
+    padding: 8px 30px;
+    
+    font-weight: 700;
+}
+
+section.component div.group h3 {
+    font-size: 17px;
+}
+
+section.component div.message {
+    width: 100%;
+    padding: 8px 60px;
+    font-size: 17px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+table th {
+    font-weight: 800;
+}
+
+table td:first-child {
+    text-align: center;
+}
+
+table th {
+    padding: 6px 0 3px 0;
+}
+
+table td {
+    padding-top: 7px;
+    vertical-align: top;
+}
+
+table td:nth-child(1) {
+    width: 13%;
+}
+
+table td:nth-child(2) {
+    width: 52%;
+    text-align: left;
+    padding: 7px 30px 0 40px;
+}
+
+table td:nth-child(2) table {
+    width: 100%;
+    border-collapse: separate;
+}
+
+table td:nth-child(2) p {
+    margin-top: 10px;
+    height: 40px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    font-size: 11px;
+}
+
+table td:nth-child(2) table td:first-child {
+    text-align: left;
+    width: 100%;
+    padding: 0;
+}
+
+table td:nth-child(2) table td:last-child {
+    text-align: right;
+    white-space: nowrap;
+    padding: 0;
+}
+
+table td:nth-child(3) {
+    width: 35%;
+}
+
+table tr.title td {
+    padding: 0;
+    width: auto;
+    text-align: center;
+}
+
+table tr.reqs td:first-child,
+table tr.reqs th:first-child {
+    width: 25%;
+}
+
+table.reqs {
+    margin-top: -7px;
+}
+
+table.reqs tr.reqs td:last-child,
+table.reqs tr.reqs th:last-child {
+    width: 75%;
+    padding: 7px 0 0 0;
+    text-align: center;
+}
+
+table.reqs tr.reqs td {
+    padding: 5px 0 !important;
+}
+
+table.reqs tr.reqs:first-child td {
+    padding-top: 7px !important;
+}
+
+table.reqs tr.reqs:last-child td {
+    padding-bottom: 7px !important;
+}
+
+tr.course-schedule td:nth-child(3) table th,
+tr.course-schedule td:nth-child(3) table td {
+    border-right: 2px solid #e5e5e5;
+    padding-top: 10px;
+    width: 14.28%;
+    
+}
+
+tr.course-schedule td:nth-child(3) table th {
+    height: 23.8px;
+    padding: 0;
+    padding-bottom: 4px;
+    vertical-align: bottom;
+    border-bottom: 2px solid black;
+}
+
+tr.course-schedule td:nth-child(3) table td span {
+    display: block;
+}
+
+tr.course-schedule.border td:nth-child(3) table td {
+    border-bottom: 0;
+}
+
+tr.course-schedule td:nth-child(3) {
+    padding-top: 0;
+}
+
+tr.course-schedule td:nth-child(3) table th:last-child,
+tr.course-schedule td:nth-child(3) table td:last-child {
+    border-right: 0;
+}
+
+tr.course-schedule td:nth-child(3) table td {
+    padding: 5px 0;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    min-height: 30px;
+}
+
+tr.course-schedule td:nth-child(3) table td label {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    font-size: 8px;
+}
+
+tr.course-schedule td:nth-child(3) table td label:nth-child(even) {
+    top: 30px;
+}
+
+tr.course-schedule td:nth-child(2) {
+    padding-right: 0;
+    padding-top: 0;
+    vertical-align: middle;
+}
+
+tr.course-schedule td:nth-child(2) div.g {
+    border-bottom: 2px solid #e5e5e5;
+}
+
+tr.course-schedule td:nth-child(2) div {
+    margin-top: 9px;
+    height: 17px;
+    border-bottom: 2px solid black;
+}
+
+tr.course-schedule td:nth-child(2) div p {
+    font-size: 12px;
+    color: black;
+    font-weight: 700;
+    height: auto;
+}
+
+h4 {
+    font-size: 12px;
+}
+
+tr.course-schedule td:nth-child(2) table {
+    border-collapse: collapse;
+}
+
+tr.course-schedule td:nth-child(2) table th,
+tr.course-schedule td:nth-child(2) table td {
+    
+    padding: 0;
+    width: auto;
+    vertical-align: middle;
+    height: 100%;
+}
+
+tr.course-schedule td:nth-child(2) {
+    position: relative;
+}
+
+tr.course-schedule > td:nth-child(2)::after {
+    position: absolute;
+    content: "";
+    width: 170%;
+    height: 2px;
+    background-color: #e5e5e5;
+    left: 40px;
+    z-index: 2;
+    bottom: 0;
+}
+
+tr.course-schedule > td.sch:nth-child(2)::after {
+    display: none;
+}
+
+
+
+tr.course-schedule > tr:first-child td:nth-child(2):after {
+    background: transparent;
+}
+
+tr.course-schedule td:nth-child(2) table th {
+    width: 15%;
+}
+
+tr.course-schedule td:nth-child(2) table td:first-child {
+    width: 55%;
+}
+
+tr.course-schedule td:nth-child(2) table td:last-child {
+    width: 30%;
+}
+
+tr.course-schedule.border td:nth-child(2) table tr:last-child th,
+tr.course-schedule.border td:nth-child(2) table tr:last-child td {
+    border-bottom: 0;
+}
+
+tr.course-schedule.border td:nth-child(2)::after {
+    display: none;
+}
+
+tr.course-schedule td:nth-child(2) table td:last-child {
+    padding-right: 30px;
+}

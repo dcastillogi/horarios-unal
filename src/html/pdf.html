@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa Curricular y Listado de Grupos de {{program}}</title>
+</head>
+
+<body>
+    <header>
+        <div class="box">
+            <a class="title" href="https://" target="_blank" rel="noopener noreferrer">
+                <img src="https://cdn.pixabay.com/photo/2016/03/31/18/34/file-1294464_960_720.png" alt="">
+                <p>Carreras</p>
+            </a>
+        </div>
+        <h1>Programa Curricular y Listado de Grupos de {{program}}</h1>
+        <p>Generado por <a href="{{author_link}}" target="_blank" rel="noopener noreferrer">{{author}}</a>, usando <a
+                href="https://github.com/danielcgiraldo/horarios-unal" target="_blank"
+                rel="noopener noreferrer">danielcgiraldo/horarios-unal</a></p>
+        <p>Compilado {{date}}</p>
+    </header>
+    <hr>
+    <h1>Convenciones</h1>
+    <table class="conventions">
+        <tbody>
+            <tr>
+                <td>
+                    {{conventions1}}
+                </td>
+                <td></td>
+                <td>
+                    {{conventions2}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="disclaimer">*Este documento es un apoyo generado a partir de información obtenida del buscador de cursos y
+        no es oficial. La
+        precisión y actualidad de los datos pueden variar y no se garantiza su exactitud. Es responsabilidad de cada
+        estudiante verificar la información proporcionada y asegurarse de
+        su validez antes de tomar decisiones basadas en ella.</p>
+    <hr>
+    <h1>Programa Curricular</h1>
+    {{components}}
+</body>
+
+</html>

@@ -1,0 +1,3 @@
+selenium==4.10.0
+pdfkit==1.0.0
+lxml==4.9.2
