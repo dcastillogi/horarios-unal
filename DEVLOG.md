@@ -8,6 +8,7 @@ PENDIENTE
 - Gestionar correctamente los cursos virtuales
 - Organizar grupos en orden ascendente, no tan desorganizado cómo esta en el buscador de cursos.
 - Mejorar la documentación del código
+- Implementar un generador de Prompts para que Chat GPT cree un horario a partir de las materias que el usuario le diga.
 
 ----------------------------------------
 
