@@ -4,6 +4,8 @@ PRÓXIMAMENTE
 
 ## Installation
 
+Install [chromedriver](https://chromedriver.chromium.org/downloads)
+
 Install wkhtmltopdf:
 
 Debian/Ubuntu:
