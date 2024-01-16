@@ -138,9 +138,7 @@ class PDF:
         for component in self.courses:
             self.content["components"] += '<section class="component">'
             self.content["components"] += f'<div class="title border"><h2>{component}</h2></div>'
-            for group in self.courses[component]:
-                self.content["components"] += f'<div class="group border"><h3>{group}</h3></div>'
-                if len(self.courses[component][group]["courses"]) > 0:
+            if len(self.courses[component]) > 0:
                     self.content["components"] += '''
                 <table class="title">
             <tbody>
@@ -167,16 +165,16 @@ class PDF:
                         </table>
                     </th>
                 </tr>'''
-                else:
+            else:
                     self.content["components"] += f'<div class="message border">Consultar Programa Curricular Oficial</div>'
-                for course in self.courses[component][group]["courses"]:
-                    if self.courses[component][group]["courses"][course]["must"]:
+            for course in self.courses[component]:
+                    if self.courses[component][course]["must"]:
                         must_class = "mid-gray"
                     else:
                         must_class = ""
                     # Get all requirements for course
                     reqs = ""
-                    for req_id, req_name in self.courses[component][group]["courses"][course]["reqs"].items():
+                    for req_id, req_name in self.courses[component][course]["reqs"].items():
                         if req_id != "OTROS":
 
                             reqs += f'''
@@ -185,7 +183,7 @@ class PDF:
                                     <td>{req_name.title()}</td>
                                 </tr>'''
 
-                    if "OTROS" in self.courses[component][group]["courses"][course]["reqs"].keys():
+                    if "OTROS" in self.courses[component][course]["reqs"].keys():
                         reqs += f'''
                         <tr class="reqs">
                                     <td></td>
@@ -193,7 +191,7 @@ class PDF:
                                 </tr>'''
                     # Get all groups for course and organize calendar
                     course_schedule = ""
-                    groups_keys = self.courses[component][group]["courses"][course]["schedule"].keys(
+                    groups_keys = self.courses[component][course]["schedule"].keys(
                     )
                     last_class = ""
 
@@ -211,7 +209,7 @@ class PDF:
                         # Course info
                         super_indices = '¹²³⁴⁵⁶⁷'
                         bloqs = extract_bloque_text(
-                            self.courses[component][group]["courses"][course]["schedule"][g]["time"])
+                            self.courses[component][course]["schedule"][g]["time"])
                         bloqs_text = "Bloques: "
 
                         for index, bloq in enumerate(bloqs):
@@ -225,7 +223,7 @@ class PDF:
                         course_schedule += f'''
                         <tr>
                                     <th>Grupo ({g})</th>
-                                    <td>{self.courses[component][group]["courses"][course]["schedule"][g]["pro"]}</td>
+                                    <td>{self.courses[component][course]["schedule"][g]["pro"]}</td>
                                     <td>{bloqs_text}</td>
                                 </tr>
                         '''
@@ -239,7 +237,7 @@ class PDF:
                             <tbody>
                                 <tr>'''
 
-                        if len(re.findall(r"\b(\d{2}/\d{2}/\d{4})\b\s*-\s*\b(\d{2}/\d{2}/\d{4})\b", self.courses[component][group]["courses"][course]["schedule"][g]["time"])) > 1:
+                        if len(re.findall(r"\b(\d{2}/\d{2}/\d{4})\b\s*-\s*\b(\d{2}/\d{2}/\d{4})\b", self.courses[component][course]["schedule"][g]["time"])) > 1:
                             # Si un curso, cambia de horarios a lo largo del semestre, (múltiples pares de fechas en el string)
                             course_schedule += '''<td>Múltiples Horarios</td>'''
                         else:
@@ -255,7 +253,7 @@ class PDF:
                                 "DOMINGO": ["", ""]
                             }
                             resultado = re.findall(
-                                patron, self.courses[component][group]["courses"][course]["schedule"][g]["time"])
+                                patron, self.courses[component][course]["schedule"][g]["time"])
 
                             for a, r in enumerate(resultado):
                                 days[r[0]][1] += f"<span>{r[1]}</span><span>{r[2]}</span>"
@@ -287,8 +285,8 @@ class PDF:
                     if len(groups_keys) == 0:
                         no_schedule_class = "border"
 
-                    if not "desc" in self.courses[component][group]["courses"][course]:
-                        self.courses[component][group]["courses"][course]["desc"] = ""
+                    if not "desc" in self.courses[component][course]:
+                        self.courses[component][course]["desc"] = ""
 
                     self.content["components"] += f'''
                     <tr class="course-info">
@@ -299,12 +297,12 @@ class PDF:
                         <table>
                             <tbody>
                                 <tr>
-                                    <td><h4>{self.courses[component][group]["courses"][course]["name"].title()}</h4></td>
-                                    <td>Créditos: {self.courses[component][group]["courses"][course]["creds"]}</td>
+                                    <td><h4>{self.courses[component][course]["name"].title()}</h4></td>
+                                    <td>Créditos: {self.courses[component][course]["creds"]}</td>
                                 </tr>
                             </tbody>
                         </table>
-                        <p>{self.courses[component][group]["courses"][course]["desc"]}</p>
+                        <p>{self.courses[component][course]["desc"]}</p>
                     </td>
                     <td class="mid-gray {no_schedule_class}">
                         <table class="reqs">
@@ -344,9 +342,8 @@ class PDF:
                 </tr>
                 {course_schedule}'''
 
-                if len(self.courses[component][group]["courses"]) > 0:
+            if len(self.courses[component]) > 0:
                     self.content["components"] += '</tbody></table>'
-                self.content["components"] += f'<div class="message border">{self.courses[component][group]["footnote"]}</div>'
             self.content["components"] += '</section>'
 
     def gen_pdf(self):
