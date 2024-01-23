@@ -41,7 +41,7 @@ class Buscador():
 
     def get_all_courses(self):
         # Wait a second because starting too fast
-        time.sleep(2)
+        time.sleep(3)
 
         # Nivel de estudio
         select = Select(self.driver.find_element(By.NAME, "pt1:r1:0:soc1"))
@@ -88,7 +88,7 @@ class Buscador():
             self.courses[course_tipo][course_id]["name"] = cols[1].text
             self.courses[course_tipo][course_id]["creds"] = cols[2].text
             self.courses[course_tipo][course_id]["must"] = False
-            self.courses[course_tipo][course_id]["reqs"] = {}
+            
             self.courses[course_tipo][course_id]["desc"] = cols[4].text
             cols[0].find_element(By.TAG_NAME, "a").click()
 
@@ -105,6 +105,17 @@ class Buscador():
                     "pro": info[6].text,
                     "time": info[8].text,
                 }
+            # Get all requisites
+            self.courses[course_tipo][course_id]["reqs"] = {}
+            lastDiv = self.driver.find_elements(
+                By.XPATH, "//div[normalize-space(@class)='margin-t af_panelGroupLayout']")[-1]
+            
+            requis = lastDiv.find_elements(By.TAG_NAME, "div")
+            if len(requis) > 1 and requis[0].text.startswith("Condición"):
+                for req in requis[1:]:
+                    req_spec = req.find_elements(By.TAG_NAME, "span")[0].find_elements(By.TAG_NAME, "span")
+                    self.courses[course_tipo][course_id]["reqs"][req_spec[0].text] = req_spec[1].text
+
             self.driver.find_element(
                 By.CLASS_NAME, "af_button").click()
             self.wait_loading()
@@ -169,9 +180,25 @@ class Buscador():
                     "pro": info[6].text,
                     "time": info[8].text,
                 }
+
+            # Get all requisites
+            try:
+                self.courses[course_tipo][course_id]["reqs"] = {}
+                lastDiv = self.driver.find_elements(
+                    By.XPATH, "//div[normalize-space(@class)='margin-t af_panelGroupLayout']")[-1]
+
+                requis = lastDiv.find_elements(By.TAG_NAME, "div")
+                if len(requis) > 1 and requis[0].text.startswith("Condición"):
+                    for req in requis[1:]:
+                        req_spec = req.find_elements(By.TAG_NAME, "span")[0].find_elements(By.TAG_NAME, "span")
+                        self.courses[course_tipo][course_id]["reqs"][req_spec[0].text] = req_spec[1].text
+            except:
+                pass
+
             self.driver.find_element(
-                By.CLASS_NAME, "af_button").click()
+                    By.CLASS_NAME, "af_button").click()
             self.wait_loading()
+            
 
     def get_group_num(self, title):
         regex_pattern = r"\(([^)]+)\)"
